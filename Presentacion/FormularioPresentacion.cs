@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Presentacion
 {
@@ -21,11 +22,13 @@ namespace Presentacion
 
         #region "Variables"
         TipoSedeServicio tipoSedeServicio = new TipoSedeServicio(); 
+        ServicioVenta servicioVenta = new ServicioVenta();
         #endregion
 
         private void FormularioPresentacion_Load(object sender, EventArgs e)
         {
             ListarSedes();
+            
         }
 
         private void ListarSedes()
@@ -59,7 +62,21 @@ namespace Presentacion
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            AbrirArchivo();
+            string rutaArchivo = AbrirArchivo();
+            if (!string.IsNullOrEmpty(rutaArchivo))
+            {
+                string codigoSedeSeleccionada = boxSedes.SelectedValue.ToString();
+                List<Venta> ventas = servicioVenta.ObtenerVentasPorSede(rutaArchivo, codigoSedeSeleccionada);
+
+               dgvDatos.DataSource = ventas;
+            }
         }
+
+        private void ListarVentas()
+        {
+            //dgvDatos.DataSource = servicioVenta.Leer(AbrirArchivo());
+        }
+
+
     }
 }
