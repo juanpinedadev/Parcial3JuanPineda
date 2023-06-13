@@ -41,12 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Generica\IRepositorioListar.cs" />
+    <Compile Include="Interfaces\ISedesRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\SedesRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Conexion\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositorios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scrip\SQLQueryParcial3.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
